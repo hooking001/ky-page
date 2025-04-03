@@ -1738,6 +1738,7 @@ details {
 
 details summary {
 	line-height: 1rem;
+	display: list-item;
 	list-style-type: none;
 	cursor: pointer;
 	transition: color var(--pico-transition)

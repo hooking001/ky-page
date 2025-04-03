@@ -4,8 +4,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="color-scheme" content="light dark">
-    <title>Personal Settings</title>
-    <meta name="description" content="Personal Settings Page">
+    <title>Settings</title>
+    <meta name="description" content="Settings">
 
     <!-- Pico.css -->
     <link
@@ -21,9 +21,30 @@
 
     <!-- Main -->
     <main>
-      <h1>Personal Settings</h1>
+      <h1>Settings</h1>
       <h2>Vim Setting File</h2>
-      <p><a href='attatch/vimrc.zip' download>download</a></p>
+      <details> 
+        <summary>Vim Setting File</summary>
+        <p><a href='attatch/vimrc.zip' download>download</a></p>
+      </details>
+      <h2>VM Setting</h2>
+      <details> 
+        <summary>Shared Folder(Rocky Linux)</summary>
+          <li>VMWare
+            <ul>Virtual Machine Settings - Options - Shared Folders</ul>
+            <ul>Name 지정, Host Path 선택</ul>
+          </li>
+          <li>Windows
+            <ul>폴더 옵션 - 공유 추가</ul>
+            <ul>Name 지정, Host Path 선택</ul>
+          </li>
+          <li>Terminal에서 vmware-hgfsclinet 명령어로 확인</li>
+          <li>vi /etc/fstab
+            <ul>vmhgfs-fuse             /mnt/hgfs               fuse    defaults,allow_other 0 0  #마지막 line에 추가</ul>
+          </li>
+          <li>cd / && mount -a</li>
+          <li>cd /mnt/hgfs/ #들어가서 확인</li>
+      </details>
     </main>
     <!-- ./ Main -->
 

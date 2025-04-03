@@ -1737,9 +1737,6 @@ details {
 }
 
 details summary {
-	position: relative;
-	padding-left: 1.2em;
-    cursor: pointer;
 	line-height: 1rem;
 	display: list-item;
 	list-style-type: none;
@@ -1752,13 +1749,6 @@ details summary:not([role]) {
 	color: var(--pico-accordion-close-summary-color)
 }
 
-details summary::-webkit-details-marker {
-	display: none
-}
-
-details summary::marker {
-	display: none
-}
 
 details summary::-moz-list-bullet {
 	list-style-type: none

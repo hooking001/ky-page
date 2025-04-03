@@ -1749,9 +1749,9 @@ details summary:not([role]) {
 	color: var(--pico-accordion-close-summary-color)
 }
 
-details summary::-webkit-details-marker {
+/* details summary::-webkit-details-marker {
 	display: none
-}
+} */
 
 details summary::marker {
 	display: none

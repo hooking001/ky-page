@@ -1744,6 +1744,9 @@ details summary {
 	transition: color var(--pico-transition)
 }
 
+summary {
+	display: list-item;
+}
 
 details summary:not([role]) {
 	color: var(--pico-accordion-close-summary-color)

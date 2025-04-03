@@ -1753,9 +1753,9 @@ details summary:not([role]) {
 	display: none
 } */
 
-details summary::marker {
+/* details summary::marker {
 	display: none
-}
+} */
 
 details summary::-moz-list-bullet {
 	list-style-type: none

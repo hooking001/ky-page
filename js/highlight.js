@@ -5358,3 +5358,11 @@ if (typeof exports === 'object' && typeof module !== 'undefined') { module.expor
 
     hljs.registerLanguage('vim', hljsGrammar);
   })();
+
+addEventListener('load', function() {
+  var blocks = document.querySelectorAll('pre code.hljs');
+  Array.prototype.forEach.call(blocks, function(block) {
+    var language = block.result.language;
+    block.insertAdjacentHTML("afterbegin", `<label>${language}</label>`);
+  });
+});

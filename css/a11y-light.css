@@ -6,6 +6,18 @@ pre code.hljs {
 code.hljs {
   padding: 3px 5px
 }
+
+.codeBlock {
+  position: relative;
+  .label {
+    position: absolute;
+    color: lightgray;
+    right: 4px;
+    top: 4px;
+    font-size: 11px;
+  }
+}
+
 /*!
   Theme: a11y-light
   Author: @ericwbailey

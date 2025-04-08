@@ -18,7 +18,6 @@
     <header> <!-- Header -->
       <hgroup>
         <h1>Cheatsheet</h1>
-        <h2>Head Section</h2>
       </hgroup>
       <nav> <!-- Navigator -->
         <ul>
@@ -31,46 +30,40 @@
       </nav>
     </header>
 
-    <main> <!-- Main -->
-      <h2>Main Section</h2>
-      <section id="Blockquote"> <!-- Section 1 -->
-        <blockquote> <!-- Blockquote-->
+    <hr style="border: solid 3px black;">
+
+    <main>
+      <section id="Letter">
+        <h2>Blockquote</h2>
+        <blockquote>
           "Blockquote Example"
           <footer>
             <cite>KeunYoung</cite>
           </footer>
         </blockquote>
-      </section>
 
-      <hr style="border: solid 3px black;">
-
-      <section id="Letter">
-        <h3>Lists Example</h3> <!-- Lists-->
+        <h2>Lists</h2>
         <ul>
           <li>list 1</li>
           <li>list 2</li>
-          <li>list 3</li>
-          <li>list 4</li>
         </ul>
 
-        <h3>Inline text elements example</h3> <!-- Inline text elements-->
+        <h2>Inline Text</h2>
         <p><a href="#" onclick="event.preventDefault()">Link</a></p>
         <p><strong>Bold</strong> <em>Italic</em> <u>Underline</u> <del>Deleted</del>
           <ins>Inserted</ins> <s>Strikethrough</s> <small>Small </small> Text <sub>Sub</sub> Text <sup>Sup</sup>
           <abbr title="Abbreviation" data-tooltip="Abbreviation">Abbr.</abbr> <kbd>Kbd</kbd> <mark>Highlighted</mark></p>
 
-        <h3>Accordions</h3> <!-- Accordions -->
-        <details> <!-- <details> -->
+        <h2>Accordions</h2>
+        <details>
           <summary>Accordion 1</summary>
-          <p>sentence accordion</p>
+          <p>Paragraphh</p>
         </details>
         <details>
           <summary>Accordion 2</summary>
           <ul>
-            <li>list accordion 1</li>
-            <li>list accordion 2</li>
-            <li>list accordion 3</li>
-            <li>list accordion 4</li>
+            <li>List accordion 1</li>
+            <li>List accordion 2</li>
           </ul>
         </details>
       </section>
@@ -78,7 +71,7 @@
       <hr style="border: solid 3px black;">
 
       <section id="Media">
-        <figure> <!-- Img-->
+        <figure>
           <img src="img/unsplash.jpg" alt="Minimal landscape">
           <figcaption>Image from <a href="https://unsplash.com/photos/a562ZEFKW8I" target="_blank">unsplash.com</a></figcaption>
         </figure>
@@ -87,8 +80,8 @@
       <hr style="border: solid 3px black;">
 
       <section id="Highlight">
-        <h3>Code Highlight</h3>
-        <h4>HTML Highlight Example</h4>
+        <h2>Code Highlight</h2>
+        <h3>HTML Highlight Example</h3>
 <pre>
 <code class="language-html">&lt;!DOCTYPE html&gt;
 &lt;html&gt;
@@ -103,12 +96,12 @@
 
 </code></pre>
 
-        <h4>Python Highlight Example</h4>
+        <h3>Python Highlight Example</h3>
 <pre>
 <code class="python">print ("Hello")
 import numpy as np</code></pre>
 
-          <h4>Verilog Highlight Example</h4>
+          <h3>Verilog Highlight Example</h3>
 <pre>
 <code class="verilog">module counter #(
   parameter WIDTH = 8

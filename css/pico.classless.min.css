@@ -1788,7 +1788,7 @@ details summary:focus-visible:not([role]) {
 
 details summary[role=button] {
 	width: 100%;
-	text-align: left
+	text-align: right
 }
 
 details summary[role=button]::after {

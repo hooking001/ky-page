@@ -12,7 +12,7 @@ code.hljs {
   .label {
     position: absolute;
     color: lightgray;
-    left: 4px;
+    right: 4px;
     top: 4px;
     font-size: 11px;
   }

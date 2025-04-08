@@ -20,25 +20,29 @@
         <h1>Cheatsheet</h1>
         <h2>Head Section</h2>
       </hgroup>
-
       <nav> <!-- Navigator -->
         <ul>
-          <li><a href="#Section1" target=_self>Section1</a></li>
-          <li><a href="#Section2" target=_self>Section2</a></li>
+          <li><a href="#Blockquote" target=_self>Blockquote</a></li>
+          <li><a href="#Letter" target=_self>Letter</a></li>
+          <li><a href="#Media" target=_self>Media</a></li>
+          <li><a href="#Highlight" target=_self>Highlight</a></li>
+          
         </ul>
       </nav>
     </header>
 
     <main> <!-- Main -->
       <h2>Main Section</h2>
-      <section id="Section1"> <!-- Section 1 -->
+      <section id="Blockquote"> <!-- Section 1 -->
         <blockquote> <!-- Blockquote-->
           "Blockquote Example"
           <footer>
             <cite>KeunYoung</cite>
           </footer>
         </blockquote>
+      </section>
 
+      <section id="Letter">
         <h3>Lists Example</h3> <!-- Lists-->
         <ul>
           <li>list 1</li>
@@ -49,22 +53,11 @@
 
         <h3>Inline text elements example</h3> <!-- Inline text elements-->
         <p><a href="#" onclick="event.preventDefault()">Link</a></p>
-        <p><strong>Bold</strong> <em>Italic</em> <u>Underline</u> <del>Deleted</del> <ins>Inserted</ins> <s>Strikethrough</s> <small>Small </small> Text <sub>Sub</sub> Text <sup>Sup</sup> <abbr title="Abbreviation" data-tooltip="Abbreviation">Abbr.</abbr> <kbd>Kbd</kbd> <mark>Highlighted</mark></p>
-        
-        <figure> <!-- Medias-->
-          <img
-            src="img/unsplash.jpg"
-            alt="Minimal landscape"
-          >
-          <figcaption>
-            Image from
-            <a href="https://unsplash.com/photos/a562ZEFKW8I" target="_blank">unsplash.com</a>
-          </figcaption>
-        </figure>
-      </section>
+        <p><strong>Bold</strong> <em>Italic</em> <u>Underline</u> <del>Deleted</del>
+          <ins>Inserted</ins> <s>Strikethrough</s> <small>Small </small> Text <sub>Sub</sub> Text <sup>Sup</sup>
+          <abbr title="Abbreviation" data-tooltip="Abbreviation">Abbr.</abbr> <kbd>Kbd</kbd> <mark>Highlighted</mark></p>
 
-      <section id="Section2"> <!-- Section 2 -->
-        <h2>Accordions</h2> <!-- Accordions -->
+        <h3>Accordions</h3> <!-- Accordions -->
         <details> <!-- <details> -->
           <summary>Accordion 1</summary>
           <p>sentence accordion</p>
@@ -80,13 +73,21 @@
         </details>
       </section>
 
-      <h2>Code Highlight</h2>
-      <h3>Python Highlight Example</h3>
+      <section id="Media">
+        <figure> <!-- Img-->
+          <img src="img/unsplash.jpg" alt="Minimal landscape">
+          <figcaption>Image from <a href="https://unsplash.com/photos/a562ZEFKW8I" target="_blank">unsplash.com</a></figcaption>
+        </figure>
+      </section>
+
+      <section id="Highlight">
+        <h3>Code Highlight</h3>
+        <h4>Python Highlight Example</h4>
 <pre>
 <code class="python">print ("Hello")
 import numpy as np</code></pre>
 
-      <h3>Verilog Highlight Example</h3>
+          <h4>Verilog Highlight Example</h4>
 <pre>
 <code class="verilog">module counter #(
   parameter WIDTH = 8
@@ -96,6 +97,7 @@ import numpy as np</code></pre>
   input reset,
   output reg [WIDTH-1:0] count
 );</code></pre>
+      </section>      
     </main>
 
     <footer> <!-- Footer -->

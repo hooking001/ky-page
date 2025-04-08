@@ -1762,7 +1762,7 @@ details summary::after {
 	width: 1rem;
 	height: 1rem;
 	margin-inline-start: calc(var(--pico-spacing, 1rem) * .5);
-	float: right;
+	float: left;
 	transform: rotate(-90deg);
 	background-image: var(--pico-icon-chevron);
 	background-position: right center;
@@ -1788,7 +1788,7 @@ details summary:focus-visible:not([role]) {
 
 details summary[role=button] {
 	width: 100%;
-	text-align: right
+	text-align: left
 }
 
 details summary[role=button]::after {

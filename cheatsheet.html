@@ -7,53 +7,39 @@
     <title>Cheatsheet</title>
     <meta name="description" content="HTML Cheatsheet">
 
-    <!-- Pico.css -->
-    <link rel="stylesheet" href="css/pico.classless.min.css">
-    <!-- Highlight -->
-    <link rel="stylesheet" href="./css/a11y-light.css">
-    <script src="./js/highlight.js"></script>
-    <script>hljs.initHighlightingOnLoad();</script>
+    <link rel="stylesheet" href="css/pico.classless.min.css"> <!-- Pico.css -->
+    <link rel="stylesheet" href="./css/a11y-light.css"> <!-- Code Highlight -->
+    <script src="./js/highlight.js"></script>           <!-- Code Highlight -->
+    <script>hljs.initHighlightingOnLoad();</script>     <!-- Code Highlight -->
   </head>
 
   <body>
-    <!-- Background -->
-    <canvas id='canvas'></canvas>
-    <!-- / Background -->
-
-    <!-- Header -->
-    <header>
+    <canvas id='canvas'></canvas> <!-- Background -->
+    <header> <!-- Header -->
       <hgroup>
         <h1>Cheatsheet</h1>
         <h2>Head Section</h2>
       </hgroup>
 
-      <!-- Navigator -->
-      <nav>
+      <nav> <!-- Navigator -->
         <ul>
           <li><a href="#Section1" target=_self>Section1</a></li>
           <li><a href="#Section2" target=_self>Section2</a></li>
         </ul>
       </nav>
-      <!-- ./ Navigator -->
-
     </header>
-    <!-- ./ Header -->
 
-    <!-- Main -->
-    <main>
+    <main> <!-- Main -->
       <h2>Main Section</h2>
-      <!-- Section 1 -->
-      <section id="Section1">
-        <!-- Blockquote-->
-        <blockquote>
+      <section id="Section1"> <!-- Section 1 -->
+        <blockquote> <!-- Blockquote-->
           "Blockquote Example"
           <footer>
             <cite>KeunYoung</cite>
           </footer>
         </blockquote>
 
-        <!-- Lists-->
-        <h3>Lists Example</h3>
+        <h3>Lists Example</h3> <!-- Lists-->
         <ul>
           <li>list 1</li>
           <li>list 2</li>
@@ -61,13 +47,11 @@
           <li>list 4</li>
         </ul>
 
-        <!-- Inline text elements-->
-        <h3>Inline text elements example</h3>
+        <h3>Inline text elements example</h3> <!-- Inline text elements-->
         <p><a href="#" onclick="event.preventDefault()">Link</a></p>
         <p><strong>Bold</strong> <em>Italic</em> <u>Underline</u> <del>Deleted</del> <ins>Inserted</ins> <s>Strikethrough</s> <small>Small </small> Text <sub>Sub</sub> Text <sup>Sup</sup> <abbr title="Abbreviation" data-tooltip="Abbreviation">Abbr.</abbr> <kbd>Kbd</kbd> <mark>Highlighted</mark></p>
         
-        <!-- Medias-->
-        <figure>
+        <figure> <!-- Medias-->
           <img
             src="img/unsplash.jpg"
             alt="Minimal landscape"
@@ -79,16 +63,11 @@
         </figure>
       </section>
 
-      <!-- Section 2 -->
-      <section id="Section2">
-        <!-- Accordions -->
-        <h1>Accordions</h1>
-        <!-- <details> -->
-        <details> 
+      <section id="Section2"> <!-- Section 2 -->
+        <h1>Accordions</h1> <!-- Accordions -->
+        <details> <!-- <details> -->
           <summary>Accordion 1</summary>
-          <p>
-            sentence accordion
-          </p>
+          <p>sentence accordion</p>
         </details>
         <details>
           <summary>Accordion 2</summary>
@@ -99,13 +78,11 @@
             <li>list accordion 4</li>
           </ul>
         </details>
-        <!-- ./ Accordions -->
       </section>
-      <!-- Highlight -->
-      <h1>Code Highlight Example</h1>
-      <div class="htmlExample">
-      <span class="label">HTML</span>
-        <pre><code class="language-html">&lt;!doctype html&gt;
+      <div class="code-highlight"> <!-- Highlight -->
+        <h1>Code Highlight Example</h1>
+        <pre>
+          <code class="language-html">&lt;!doctype html&gt;
 &lt;html lang="ko"&gt;
   &lt;head&gt;
     &lt;title&gt;Hello world!&lt;/title&gt;
@@ -118,14 +95,12 @@
       </div>
     </main>
 
-    <!-- Footer -->
-    <footer>
+    <footer> <!-- Footer -->
       <small>
         <a href="index.html">Home</a>
       </small>
     </footer>
 
-    <!-- Background -->
-    <script src="js/wallpattern.js"></script>
+    <script src="js/wallpattern.js"></script> <!-- Background -->
   </body>
 </html>

@@ -8,8 +8,10 @@ window.onload = function() {
 
 var wallPattern = {
   // Settings
-  spacingX: 55,
-  spacingY: 35,
+  // spacingX: 55,
+  spacingX: 5,
+  // spacingY: 35,
+  spacingY: 5,
   offsetVariance: 13,
   baseRadius: 55,
   

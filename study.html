@@ -21,11 +21,98 @@
 <!-- Main -->
 <main> 
 <h2>TCL</h2>
+<p>https://www.tutorialspoint.com/tcl-tk/index.htm</p>
+
 <details>
 <summary>Tcl Shell</summary>
 <pre><code class="command-line language-bash">tclsh
 </code></pre>
 </details>
+
+<details>
+<summary>Print</summary>
+<pre><code class="command-line language-bash">puts hello
+puts ("Hello World!")
+</code></pre>
+</details>
+
+<details>
+<summary>Run script</summary>
+<pre><code class="command-line language-bash">tclsh run.tcl
+</code></pre>
+</details>
+
+<details>
+<summary>Variable</summary>
+<pre><code class="command-line language-bash">set a 3 #Set a to value 3
+puts $a #Call value a
+</code></pre>
+</details>
+
+<details>
+<summary>If-else statement</summary>
+<pre><code class="command-line language-bash">set A "abcd1234"
+  if {[string match "abcd*" $device]} {
+   puts "If:True"
+  } else {
+    puts "If:Else"
+}
+</code></pre>
+</details>
+
+<details>
+<summary>List</summary>
+<p>Multiple-line</p>
+<pre><code class="command-line language-bash">set a {
+  a1
+  a2
+  a3
+} 
+</code></pre>
+<p>Single-line</p>
+<pre><code class="command-line language-bash">set a [list a1 a2 a3]
+</code></pre>
+</details>
+
+<details>
+<summary>List Traversal</summary>
+<pre><code class="command-line language-bash">foreach elem $python {
+  puts $elem
+ }
+</code></pre>
+</details>  
+
+<details>
+<summary>List Indexing</summary>
+<pre><code class="command-line language-bash">set greeting [list "hello" "hi"]
+puts lindex $greeting 0  
+</code></pre>
+</details>  
+
+<details>
+<summary>Logical Operator</summary>
+<pre><code class="command-line language-bash">&&# Logical and
+||# Logical and
+!# Logical Not
+</code></pre>
+</details>  
+
+<details>
+<summary>Iteration</summary>
+<pre><code class="command-line language-bash">for {set i 0} {$i < 10} {incr i} {
+  puts $i
+}  
+</code></pre>
+</details>  
+
+<details>
+<summary>File Exist</summary>
+<pre><code class="command-line language-bash">if {[file exists "a"]} {
+  puts "a exists"
+}
+</code></pre>
+</details>  
+
 </main>
 
 <!-- Footer -->

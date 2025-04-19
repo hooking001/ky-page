@@ -2604,7 +2604,91 @@ var hljs = (function () {
 
 })();
 if (typeof exports === 'object' && typeof module !== 'undefined') { module.exports = hljs; }
-/*! `bash` grammar compiled for Highlight.js 11.10.0 */
+/*! `autohotkey` grammar compiled for Highlight.js 11.10.0 */
+  (function(){
+    var hljsGrammar = (function () {
+  'use strict';
+
+  /*
+  Language: AutoHotkey
+  Author: Seongwon Lee <dlimpid@gmail.com>
+  Description: AutoHotkey language definition
+  Category: scripting
+  */
+
+  /** @type LanguageFn */
+  function autohotkey(hljs) {
+    const BACKTICK_ESCAPE = { begin: '`[\\s\\S]' };
+
+    return {
+      name: 'AutoHotkey',
+      case_insensitive: true,
+      aliases: [ 'ahk' ],
+      keywords: {
+        keyword: 'Break Continue Critical Exit ExitApp Gosub Goto New OnExit Pause return SetBatchLines SetTimer Suspend Thread Throw Until ahk_id ahk_class ahk_pid ahk_exe ahk_group',
+        literal: 'true false NOT AND OR',
+        built_in: 'ComSpec Clipboard ClipboardAll ErrorLevel'
+      },
+      contains: [
+        BACKTICK_ESCAPE,
+        hljs.inherit(hljs.QUOTE_STRING_MODE, { contains: [ BACKTICK_ESCAPE ] }),
+        hljs.COMMENT(';', '$', { relevance: 0 }),
+        hljs.C_BLOCK_COMMENT_MODE,
+        {
+          className: 'number',
+          begin: hljs.NUMBER_RE,
+          relevance: 0
+        },
+        {
+          // subst would be the most accurate however fails the point of
+          // highlighting. variable is comparably the most accurate that actually
+          // has some effect
+          className: 'variable',
+          begin: '%[a-zA-Z0-9#_$@]+%'
+        },
+        {
+          className: 'built_in',
+          begin: '^\\s*\\w+\\s*(,|%)'
+          // I don't really know if this is totally relevant
+        },
+        {
+          // symbol would be most accurate however is highlighted just like
+          // built_in and that makes up a lot of AutoHotkey code meaning that it
+          // would fail to highlight anything
+          className: 'title',
+          variants: [
+            { begin: '^[^\\n";]+::(?!=)' },
+            {
+              begin: '^[^\\n";]+:(?!=)',
+              // zero relevance as it catches a lot of things
+              // followed by a single ':' in many languages
+              relevance: 0
+            }
+          ]
+        },
+        {
+          className: 'meta',
+          begin: '^\\s*#\\w+',
+          end: '$',
+          relevance: 0
+        },
+        {
+          className: 'built_in',
+          begin: 'A_[a-zA-Z0-9]+'
+        },
+        {
+          // consecutive commas, not for highlighting but just for relevance
+          begin: ',\\s*,' }
+      ]
+    };
+  }
+
+  return autohotkey;
+
+})();
+
+    hljs.registerLanguage('autohotkey', hljsGrammar);
+  })();/*! `bash` grammar compiled for Highlight.js 11.10.0 */
   (function(){
     var hljsGrammar = (function () {
   'use strict';
@@ -3973,6 +4057,129 @@ if (typeof exports === 'object' && typeof module !== 'undefined') { module.expor
 })();
 
     hljs.registerLanguage('cpp', hljsGrammar);
+  })();/*! `makefile` grammar compiled for Highlight.js 11.10.0 */
+  (function(){
+    var hljsGrammar = (function () {
+  'use strict';
+
+  /*
+  Language: Makefile
+  Author: Ivan Sagalaev <maniac@softwaremaniacs.org>
+  Contributors: Joël Porquet <joel@porquet.org>
+  Website: https://www.gnu.org/software/make/manual/html_node/Introduction.html
+  Category: common, build-system
+  */
+
+  function makefile(hljs) {
+    /* Variables: simple (eg $(var)) and special (eg $@) */
+    const VARIABLE = {
+      className: 'variable',
+      variants: [
+        {
+          begin: '\\$\\(' + hljs.UNDERSCORE_IDENT_RE + '\\)',
+          contains: [ hljs.BACKSLASH_ESCAPE ]
+        },
+        { begin: /\$[@%<?\^\+\*]/ }
+      ]
+    };
+    /* Quoted string with variables inside */
+    const QUOTE_STRING = {
+      className: 'string',
+      begin: /"/,
+      end: /"/,
+      contains: [
+        hljs.BACKSLASH_ESCAPE,
+        VARIABLE
+      ]
+    };
+    /* Function: $(func arg,...) */
+    const FUNC = {
+      className: 'variable',
+      begin: /\$\([\w-]+\s/,
+      end: /\)/,
+      keywords: { built_in:
+          'subst patsubst strip findstring filter filter-out sort '
+          + 'word wordlist firstword lastword dir notdir suffix basename '
+          + 'addsuffix addprefix join wildcard realpath abspath error warning '
+          + 'shell origin flavor foreach if or and call eval file value' },
+      contains: [ VARIABLE ]
+    };
+    /* Variable assignment */
+    const ASSIGNMENT = { begin: '^' + hljs.UNDERSCORE_IDENT_RE + '\\s*(?=[:+?]?=)' };
+    /* Meta targets (.PHONY) */
+    const META = {
+      className: 'meta',
+      begin: /^\.PHONY:/,
+      end: /$/,
+      keywords: {
+        $pattern: /[\.\w]+/,
+        keyword: '.PHONY'
+      }
+    };
+    /* Targets */
+    const TARGET = {
+      className: 'section',
+      begin: /^[^\s]+:/,
+      end: /$/,
+      contains: [ VARIABLE ]
+    };
+    return {
+      name: 'Makefile',
+      aliases: [
+        'mk',
+        'mak',
+        'make',
+      ],
+      keywords: {
+        $pattern: /[\w-]+/,
+        keyword: 'define endef undefine ifdef ifndef ifeq ifneq else endif '
+        + 'include -include sinclude override export unexport private vpath'
+      },
+      contains: [
+        hljs.HASH_COMMENT_MODE,
+        VARIABLE,
+        QUOTE_STRING,
+        FUNC,
+        ASSIGNMENT,
+        META,
+        TARGET
+      ]
+    };
+  }
+
+  return makefile;
+
+})();
+
+    hljs.registerLanguage('makefile', hljsGrammar);
+  })();/*! `plaintext` grammar compiled for Highlight.js 11.10.0 */
+  (function(){
+    var hljsGrammar = (function () {
+  'use strict';
+
+  /*
+  Language: Plain text
+  Author: Egor Rogov (e.rogov@postgrespro.ru)
+  Description: Plain text without any highlighting.
+  Category: common
+  */
+
+  function plaintext(hljs) {
+    return {
+      name: 'Plain text',
+      aliases: [
+        'text',
+        'txt'
+      ],
+      disableAutodetect: true
+    };
+  }
+
+  return plaintext;
+
+})();
+
+    hljs.registerLanguage('plaintext', hljsGrammar);
   })();/*! `python` grammar compiled for Highlight.js 11.10.0 */
   (function(){
     var hljsGrammar = (function () {
@@ -4418,48 +4625,6 @@ if (typeof exports === 'object' && typeof module !== 'undefined') { module.expor
 })();
 
     hljs.registerLanguage('python', hljsGrammar);
-  })();/*! `shell` grammar compiled for Highlight.js 11.10.0 */
-  (function(){
-    var hljsGrammar = (function () {
-  'use strict';
-
-  /*
-  Language: Shell Session
-  Requires: bash.js
-  Author: TSUYUSATO Kitsune <make.just.on@gmail.com>
-  Category: common
-  Audit: 2020
-  */
-
-  /** @type LanguageFn */
-  function shell(hljs) {
-    return {
-      name: 'Shell Session',
-      aliases: [
-        'console',
-        'shellsession'
-      ],
-      contains: [
-        {
-          className: 'meta.prompt',
-          // We cannot add \s (spaces) in the regular expression otherwise it will be too broad and produce unexpected result.
-          // For instance, in the following example, it would match "echo /path/to/home >" as a prompt:
-          // echo /path/to/home > t.exe
-          begin: /^\s{0,3}[/~\w\d[\]()@-]*[>%$#][ ]?/,
-          starts: {
-            end: /[^\\](?=\s*$)/,
-            subLanguage: 'bash'
-          }
-        }
-      ]
-    };
-  }
-
-  return shell;
-
-})();
-
-    hljs.registerLanguage('shell', hljsGrammar);
   })();/*! `tcl` grammar compiled for Highlight.js 11.10.0 */
   (function(){
     var hljsGrammar = (function () {
@@ -5219,6 +5384,231 @@ if (typeof exports === 'object' && typeof module !== 'undefined') { module.expor
 })();
 
     hljs.registerLanguage('verilog', hljsGrammar);
+  })();/*! `vhdl` grammar compiled for Highlight.js 11.10.0 */
+  (function(){
+    var hljsGrammar = (function () {
+  'use strict';
+
+  /*
+  Language: VHDL
+  Author: Igor Kalnitsky <igor@kalnitsky.org>
+  Contributors: Daniel C.K. Kho <daniel.kho@tauhop.com>, Guillaume Savaton <guillaume.savaton@eseo.fr>
+  Description: VHDL is a hardware description language used in electronic design automation to describe digital and mixed-signal systems.
+  Website: https://en.wikipedia.org/wiki/VHDL
+  Category: hardware
+  */
+
+  function vhdl(hljs) {
+    // Regular expression for VHDL numeric literals.
+
+    // Decimal literal:
+    const INTEGER_RE = '\\d(_|\\d)*';
+    const EXPONENT_RE = '[eE][-+]?' + INTEGER_RE;
+    const DECIMAL_LITERAL_RE = INTEGER_RE + '(\\.' + INTEGER_RE + ')?' + '(' + EXPONENT_RE + ')?';
+    // Based literal:
+    const BASED_INTEGER_RE = '\\w+';
+    const BASED_LITERAL_RE = INTEGER_RE + '#' + BASED_INTEGER_RE + '(\\.' + BASED_INTEGER_RE + ')?' + '#' + '(' + EXPONENT_RE + ')?';
+
+    const NUMBER_RE = '\\b(' + BASED_LITERAL_RE + '|' + DECIMAL_LITERAL_RE + ')';
+
+    const KEYWORDS = [
+      "abs",
+      "access",
+      "after",
+      "alias",
+      "all",
+      "and",
+      "architecture",
+      "array",
+      "assert",
+      "assume",
+      "assume_guarantee",
+      "attribute",
+      "begin",
+      "block",
+      "body",
+      "buffer",
+      "bus",
+      "case",
+      "component",
+      "configuration",
+      "constant",
+      "context",
+      "cover",
+      "disconnect",
+      "downto",
+      "default",
+      "else",
+      "elsif",
+      "end",
+      "entity",
+      "exit",
+      "fairness",
+      "file",
+      "for",
+      "force",
+      "function",
+      "generate",
+      "generic",
+      "group",
+      "guarded",
+      "if",
+      "impure",
+      "in",
+      "inertial",
+      "inout",
+      "is",
+      "label",
+      "library",
+      "linkage",
+      "literal",
+      "loop",
+      "map",
+      "mod",
+      "nand",
+      "new",
+      "next",
+      "nor",
+      "not",
+      "null",
+      "of",
+      "on",
+      "open",
+      "or",
+      "others",
+      "out",
+      "package",
+      "parameter",
+      "port",
+      "postponed",
+      "procedure",
+      "process",
+      "property",
+      "protected",
+      "pure",
+      "range",
+      "record",
+      "register",
+      "reject",
+      "release",
+      "rem",
+      "report",
+      "restrict",
+      "restrict_guarantee",
+      "return",
+      "rol",
+      "ror",
+      "select",
+      "sequence",
+      "severity",
+      "shared",
+      "signal",
+      "sla",
+      "sll",
+      "sra",
+      "srl",
+      "strong",
+      "subtype",
+      "then",
+      "to",
+      "transport",
+      "type",
+      "unaffected",
+      "units",
+      "until",
+      "use",
+      "variable",
+      "view",
+      "vmode",
+      "vprop",
+      "vunit",
+      "wait",
+      "when",
+      "while",
+      "with",
+      "xnor",
+      "xor"
+    ];
+    const BUILT_INS = [
+      "boolean",
+      "bit",
+      "character",
+      "integer",
+      "time",
+      "delay_length",
+      "natural",
+      "positive",
+      "string",
+      "bit_vector",
+      "file_open_kind",
+      "file_open_status",
+      "std_logic",
+      "std_logic_vector",
+      "unsigned",
+      "signed",
+      "boolean_vector",
+      "integer_vector",
+      "std_ulogic",
+      "std_ulogic_vector",
+      "unresolved_unsigned",
+      "u_unsigned",
+      "unresolved_signed",
+      "u_signed",
+      "real_vector",
+      "time_vector"
+    ];
+    const LITERALS = [
+      // severity_level
+      "false",
+      "true",
+      "note",
+      "warning",
+      "error",
+      "failure",
+      // textio
+      "line",
+      "text",
+      "side",
+      "width"
+    ];
+
+    return {
+      name: 'VHDL',
+      case_insensitive: true,
+      keywords: {
+        keyword: KEYWORDS,
+        built_in: BUILT_INS,
+        literal: LITERALS
+      },
+      illegal: /\{/,
+      contains: [
+        hljs.C_BLOCK_COMMENT_MODE, // VHDL-2008 block commenting.
+        hljs.COMMENT('--', '$'),
+        hljs.QUOTE_STRING_MODE,
+        {
+          className: 'number',
+          begin: NUMBER_RE,
+          relevance: 0
+        },
+        {
+          className: 'string',
+          begin: '\'(U|X|0|1|Z|W|L|H|-)\'',
+          contains: [ hljs.BACKSLASH_ESCAPE ]
+        },
+        {
+          className: 'symbol',
+          begin: '\'[A-Za-z](_?[A-Za-z0-9])*',
+          contains: [ hljs.BACKSLASH_ESCAPE ]
+        }
+      ]
+    };
+  }
+
+  return vhdl;
+
+})();
+
+    hljs.registerLanguage('vhdl', hljsGrammar);
   })();/*! `vim` grammar compiled for Highlight.js 11.10.0 */
   (function(){
     var hljsGrammar = (function () {
@@ -5358,11 +5748,3 @@ if (typeof exports === 'object' && typeof module !== 'undefined') { module.expor
 
     hljs.registerLanguage('vim', hljsGrammar);
   })();
-
-addEventListener('load', function() {
-  var blocks = document.querySelectorAll('pre code.hljs');
-  Array.prototype.forEach.call(blocks, function(block) {
-    var language = block.result.language;
-    block.insertAdjacentHTML("afterbegin", `<label>${language}</label>`);
-  });
-});
